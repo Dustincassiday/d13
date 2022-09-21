@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'd13-root',
-  template: `
-    <h1>Web App</h1>
-    <router-outlet></router-outlet>
-  `,
+  template: ` <d13-shell></d13-shell> `,
 })
 export class AppComponent {}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { WebShellUiModule } from '@d13/web/shell/ui';
+import { ShellComponent } from './shell.component';
 
 export const routes: Route[] = [
   {
@@ -18,13 +19,14 @@ export const routes: Route[] = [
   },
   {
     path: '',
-    redirectTo: 'account',
+    redirectTo: 'landing',
     pathMatch: 'full',
   },
 ];
 
 @NgModule({
   imports: [CommonModule, WebShellUiModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  declarations: [ShellComponent],
+  exports: [ShellComponent],
 })
 export class WebShellFeatureModule {}
