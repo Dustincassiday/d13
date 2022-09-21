@@ -2,7 +2,16 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "shared-data-access": "libs/shared/data-access",
+    "shared-ui": "libs/shared/ui",
+    "shared-util": "libs/shared/util",
     "web": "apps/web",
-    "web-e2e": "apps/web-e2e"
+    "web-account-feature": "libs/web/account/feature",
+    "web-account-ui": "libs/web/account/ui",
+    "web-e2e": "apps/web-e2e",
+    "web-landing-feature": "libs/web/landing/feature",
+    "web-landing-ui": "libs/web/landing/ui",
+    "web-shell-feature": "libs/web/shell/feature",
+    "web-shell-ui": "libs/web/shell/ui"
   }
 }
