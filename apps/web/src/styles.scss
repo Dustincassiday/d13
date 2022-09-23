@@ -1,5 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body,
+d3-root {
+  height: 100%;
+}
+
 .bi {
   vertical-align: -0.125em;
   fill: currentColor;
+}
+
+main > .container {
+  padding: 140px 15px 0;
 }
