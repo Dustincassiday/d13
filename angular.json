@@ -12,6 +12,7 @@
     "web-landing-feature": "libs/web/landing/feature",
     "web-landing-ui": "libs/web/landing/ui",
     "web-shell-feature": "libs/web/shell/feature",
+    "web-shell-shared": "libs/web/shell/shared",
     "web-shell-ui": "libs/web/shell/ui"
   }
 }

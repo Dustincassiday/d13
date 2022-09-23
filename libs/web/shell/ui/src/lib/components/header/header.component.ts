@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'd13-header',
   template: ` <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-      <div class="container-fluid">
+      <div class="container">
         <a
           routerLink="."
           class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
