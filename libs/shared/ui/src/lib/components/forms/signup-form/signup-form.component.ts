@@ -36,7 +36,8 @@ export class SignupFormComponent {
     this.form = this._buildForm();
   }
 
-  public handleSubmit(): void {
+  public submit(): void {
+    this.form.markAllAsTouched();
     if (!this.form.valid) {
       return;
     }

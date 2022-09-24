@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 import { ShellFacade, ShellViewmodel } from '@d13/web/shell/shared';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
@@ -22,9 +17,20 @@ export class ShellComponent {
     this.vm$ = this._facade.vm$;
   }
 
-  public handleHeaderBtnClick(modalRef: TemplateRef<unknown>) {
+  public openModal(modalRef: TemplateRef<unknown>) {
+    if (this._modalService.hasOpenModals()) {
+      this._modalService.dismissAll();
+    }
     this._modalService.open(modalRef, {
       centered: true,
     });
+  }
+
+  public handleLoginFormSubmit(formValues: { [key: string]: string }) {
+    console.log('Login', formValues);
+  }
+
+  public handleSignupFormSubmit(formValues: { [key: string]: string }) {
+    console.log('Signup', formValues);
   }
 }

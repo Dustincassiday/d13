@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   LoginFormComponent,
   LoginModalComponent,
@@ -7,9 +8,10 @@ import {
   SignupFormComponent,
   SignupModalComponent,
 } from './components';
-import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   declarations: [
     LoginFormComponent,
     SignupFormComponent,
@@ -17,6 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginModalComponent,
     SignupModalComponent,
   ],
-  exports: [LoginModalComponent, SignupModalComponent],
+  exports: [
+    LoginModalComponent,
+    SignupModalComponent,
+    LoginFormComponent,
+    SignupFormComponent,
+  ],
 })
 export class SharedUiModule {}
