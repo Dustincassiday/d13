@@ -12,23 +12,14 @@ on:
             - uses: actions/checkout@v2
               with:
                 fetch-depth: 0
-            - name: NX
-              uses: nrwl/nx-set-shas@v3
+            - uses: nrwl/nx-set-shas@v3
+            - run: npm ci
+            - run: npx nx workspace-lint
+            - run: npx nx format:check
+            - run: npx nx affected --target=lint --parallel=3
+            - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+            - run: npx nx affected --target=build --parallel=3
 
-              name: CI
-              run: npm ci
-
-              name: ES Lint
-              run: npx nx workspace-lint
-
-              name: Format
-              run: npx nx format:check
-
-              name: NX Affected
-              run: npx nx affected --target=lint --parallel=3
-              run: npx nx affected --target=test --parallel=3 --ci --code-coverage
-              run: npx nx affected --target=build --parallel=3
-              
             - name: SonarCloud Scan
               uses: SonarSource/sonarcloud-github-action@master
               env:
