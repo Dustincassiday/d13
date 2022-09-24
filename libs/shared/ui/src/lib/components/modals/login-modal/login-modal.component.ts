@@ -15,5 +15,7 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 export class LoginModalComponent {
   @Input() public modalRef!: NgbModalRef;
 
-  @Output() public btnClicked = new EventEmitter();
+  @Output() public loginBtnClick = new EventEmitter();
+  @Output() public newUserBtnClick = new EventEmitter();
+  @Output() public forgotPasswordBtnClick = new EventEmitter();
 }
