@@ -1,7 +1,12 @@
 html,
-body,
-d3-root {
+body {
   height: 100%;
+}
+
+d13-shell {
+  display: block;
+  height: 100vh;
+  min-width: 380px;
 }
 
 .bi {
@@ -11,4 +16,14 @@ d3-root {
 
 main > .container {
   padding: 140px 15px 0;
+}
+
+.required::after {
+  content: '*';
+  color: red;
+}
+
+.modal-backdrop {
+  height: 100%;
+  width: 100%;
 }

@@ -1,13 +1,33 @@
-<d13-layout [vm]="vm$ | async" (headerBtnClick)="handleHeaderBtnClick($event === 'login' ? login : signup)">
+<d13-layout
+  [vm]="vm$ | async"
+  (headerBtnClick)="openModal($event === 'login' ? login : signup)"
+>
   <router-outlet main-content></router-outlet>
 </d13-layout>
 
 <!-- MODALS -->
 <ng-template #login let-modal>
-  <d13-login-modal [modalRef]="modal"></d13-login-modal>
+  <d13-login-modal
+    [modalRef]="modal"
+    (newUserBtnClick)="openModal(signup)"
+    (loginBtnClick)="loginForm.submit()"
+  >
+    <d13-login-form
+      #loginForm
+      (formSubmit)="handleLoginFormSubmit($event)"
+    ></d13-login-form>
+  </d13-login-modal>
 </ng-template>
 
 <ng-template #signup let-modal>
-  <d13-signup-modal [modalRef]="modal">
+  <d13-signup-modal
+    [modalRef]="modal"
+    (loginBtnClick)="openModal(login)"
+    (signupBtnClick)="signUpForm.submit()"
+  >
+    <d13-signup-form
+      #signUpForm
+      (formSubmit)="handleSignupFormSubmit($event)"
+    ></d13-signup-form>
   </d13-signup-modal>
 </ng-template>

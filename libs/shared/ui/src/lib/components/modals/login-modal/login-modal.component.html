@@ -1,12 +1,34 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">Login</h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.dismiss('Cross click')"
+  ></button>
 </div>
 <div class="modal-body">
-  <p>Login Modal!</p>
+  <ng-content></ng-content>
 </div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-success" (click)="modalRef.close('Save click')">
+<div class="modal-footer d-flex justify-content-between">
+  <span>
+    <button
+      type="button"
+      class="px-0 btn btn-link"
+      (click)="newUserBtnClick.emit()"
+    >
+      New User
+    </button>
+    |
+    <button
+      type="button"
+      class="px-0 btn btn-link"
+      (click)="forgotPasswordBtnClick.emit()"
+    >
+      Forgot Password
+    </button>
+  </span>
+  <button type="button" class="btn btn-success" (click)="loginBtnClick.emit()">
     Login
   </button>
 </div>
