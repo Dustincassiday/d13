@@ -1,4 +1,4 @@
-name: CI
+name: build
 on:
   push:
     branches:
@@ -16,6 +16,8 @@ jobs:
           fetch-depth: 0
       - name: NX
         uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: prod
       - run: npm ci
       - run: npx nx workspace-lint
       - run: npx nx format:check
