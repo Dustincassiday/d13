@@ -1,14 +1,25 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">Signup</h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.dismiss('Cross click')"
+  ></button>
 </div>
 <div class="modal-body">
   <ng-content></ng-content>
 </div>
-<div class="modal-footer d-flex justify-content-between ">
+<div class="modal-footer d-flex justify-content-between">
   <span>
     <span>Existing Account? </span>
-    <button type="button" class="px-0 btn btn-link" (click)="loginBtnClick.emit()">Login</button>
+    <button
+      type="button"
+      class="px-0 btn btn-link"
+      (click)="loginBtnClick.emit()"
+    >
+      Login
+    </button>
   </span>
   <button type="button" class="btn btn-success" (click)="signupBtnClick.emit()">
     Signup

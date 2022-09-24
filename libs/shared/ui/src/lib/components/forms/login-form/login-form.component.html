@@ -1,7 +1,16 @@
 <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-  <div class=" mb-3" [ngClass]="email?.touched ? 'was-validated' : 'needs-validated'">
+  <div
+    class="mb-3"
+    [ngClass]="email?.touched ? 'was-validated' : 'needs-validated'"
+  >
     <label for="email" class="required form-label">Email address</label>
-    <input type="email" formControlName="email" class="form-control" id="email" required>
+    <input
+      type="email"
+      formControlName="email"
+      class="form-control"
+      id="email"
+      required
+    />
     <div *ngIf="email?.errors?.['required']" class="invalid-feedback">
       Email is required
     </div>
@@ -9,12 +18,20 @@
       Please enter a correct email format
     </div>
   </div>
-  <div class="mb-3" [ngClass]="password?.touched ? 'was-validated' : 'needs-validated'">
-    <label for="password" class=" required form-label">Password</label>
-    <input type="password" formControlName="password" class="form-control" id="password" required>
+  <div
+    class="mb-3"
+    [ngClass]="password?.touched ? 'was-validated' : 'needs-validated'"
+  >
+    <label for="password" class="required form-label">Password</label>
+    <input
+      type="password"
+      formControlName="password"
+      class="form-control"
+      id="password"
+      required
+    />
     <div *ngIf="password?.errors?.['required']" class="invalid-feedback">
       Password is required
     </div>
   </div>
-
 </form>
