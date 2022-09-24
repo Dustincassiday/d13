@@ -1,11 +1,9 @@
 name: build
 on:
   push:
-    branches:
-      - dev
-    pull_request:
-      types: [opened, synchronize, reopened]
-
+    branches: [dev, prod]
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   CI:
     runs-on: ubuntu-latest
