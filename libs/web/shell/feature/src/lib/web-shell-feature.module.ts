@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { WebShellUiModule } from '@d13/web/shell/ui';
-import { ShellComponent } from './shell.component';
 import { WebShellSharedModule } from '@d13/web/shell/shared';
+import { ShellComponent } from './components';
+import { SharedUiModule } from '@d13/shared/ui';
 
 export const routes: Route[] = [
   {
@@ -13,15 +14,14 @@ export const routes: Route[] = [
       import('@d13/web/account/feature').then((m) => m.WebAccountFeatureModule),
   },
   {
-    path: 'landing',
+    path: '',
     pathMatch: 'full',
     loadChildren: () =>
       import('@d13/web/landing/feature').then((m) => m.WebLandingFeatureModule),
   },
   {
-    path: '',
-    redirectTo: 'landing',
-    pathMatch: 'full',
+    path: '**',
+    redirectTo: '',
   },
 ];
 
@@ -30,6 +30,7 @@ export const routes: Route[] = [
     CommonModule,
     WebShellSharedModule,
     WebShellUiModule,
+    SharedUiModule,
     RouterModule.forRoot(routes),
   ],
   declarations: [ShellComponent],

@@ -6,9 +6,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SvgComponent } from './components/svg/svg-icons.component';
+import { SharedUiModule } from '@d13/shared/ui';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [CommonModule, RouterModule, NgbModule, SharedUiModule],
   declarations: [
     LayoutComponent,
     HeaderComponent,
