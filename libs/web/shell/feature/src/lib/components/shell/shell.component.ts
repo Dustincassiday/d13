@@ -23,6 +23,7 @@ export class ShellComponent {
     }
     this._modalService.open(modalRef, {
       centered: true,
+      // scrollable: true,
     });
   }
 
