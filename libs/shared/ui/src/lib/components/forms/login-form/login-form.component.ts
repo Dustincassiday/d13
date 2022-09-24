@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -15,7 +10,6 @@ import {
   selector: 'd13-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
   public form: FormGroup;
@@ -37,7 +31,8 @@ export class LoginFormComponent {
     this.form = this._buildForm();
   }
 
-  public handleSubmit(): void {
+  public submit(): void {
+    this.form.markAllAsTouched();
     if (!this.form.valid) {
       return;
     }
