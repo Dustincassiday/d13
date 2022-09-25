@@ -27,6 +27,7 @@ export class LoginFormComponent {
     password: string;
   }>();
 
+  // this is a test comment dfdf
   constructor() {
     this.form = this._buildForm();
   }
