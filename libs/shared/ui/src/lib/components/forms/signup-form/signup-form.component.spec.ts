@@ -9,10 +9,6 @@ describe('SignupFormComponent', () => {
     sut = new SignupFormComponent();
   });
 
-  it('should fail', () => {
-    expect(false).toBeTruthy();
-  });
-
   it('should create', () => {
     expect(sut).toBeTruthy();
   });

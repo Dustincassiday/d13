@@ -21,6 +21,16 @@ export class ShellFacade {
     this._vm$ = new BehaviorSubject<ShellViewmodel>(initialVm);
   }
 
+  private _doSometing() {
+    if (true) {
+      return null;
+    } else {
+      return 'something else';
+    }
+
+    return null;
+  }
+
   private _getCurrentYear(): string {
     return this._datePipe.transform(Date.now(), 'yyyy') ?? '';
   }
