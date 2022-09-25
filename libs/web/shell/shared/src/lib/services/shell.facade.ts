@@ -22,7 +22,8 @@ export class ShellFacade {
   }
 
   private _doSometing() {
-    if (true) {
+    const val = true;
+    if (val) {
       return null;
     } else {
       return 'something else';
