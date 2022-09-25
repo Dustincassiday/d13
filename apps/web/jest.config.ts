@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { getJestProjects } from '@nrwl/jest';
+
 export default {
   displayName: 'web',
   preset: '../../jest.preset.js',
@@ -19,4 +21,7 @@ export default {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
+  projects: getJestProjects().map((val: unknown) =>
+    (val as string).replace('<rootDir>', '<rootDir>/../../')
+  ),
 };
