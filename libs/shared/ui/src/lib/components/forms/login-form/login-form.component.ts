@@ -27,7 +27,7 @@ export class LoginFormComponent {
     password: string;
   }>();
 
-  // this is a test comment ssdfsdfsd
+  // this is a test comment
   constructor() {
     this.form = this._buildForm();
   }
