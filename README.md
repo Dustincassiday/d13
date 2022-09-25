@@ -1,6 +1,12 @@
-
-
 # D13
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Dustincassiday_d13&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Dustincassiday_d13)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Dustincassiday_d13&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Dustincassiday_d13)
+
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Dustincassiday_d13&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Dustincassiday_d13)
+
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Dustincassiday_d13&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Dustincassiday_d13)
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -86,11 +92,6 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
 
 ## ☁ Nx Cloud
 
