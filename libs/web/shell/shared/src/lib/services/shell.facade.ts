@@ -16,19 +16,16 @@ export class ShellFacade {
   constructor(private readonly _datePipe: DatePipe) {
     const initialVm: ShellViewmodel = {
       title: 'D13 Web App',
-      copyright: `&copy;${this._getCurrentYear()} D13 LLC.`,
+      copyright: `&copy;${this._getCurrentYear()} D13`,
     };
     this._vm$ = new BehaviorSubject<ShellViewmodel>(initialVm);
   }
 
-  private _doSometing() {
+  public doSomething() {
     const val = true;
     if (val) {
       return null;
-    } else {
-      return 'something else';
     }
-
     return null;
   }
 
