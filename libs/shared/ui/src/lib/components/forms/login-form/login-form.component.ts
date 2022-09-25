@@ -27,12 +27,11 @@ export class LoginFormComponent {
     password: string;
   }>();
 
-  // this is a test comment
+  // this is a test comment ssdfsdfsd
   constructor() {
     this.form = this._buildForm();
   }
 
-  //TODO: something
   public submit(): void {
     this.form.markAllAsTouched();
     if (!this.form.valid) {
