@@ -18,11 +18,6 @@ describe('ShellFacade', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should cover doDSomething method', () => {
-    const sut = service.doSomething();
-    expect(sut).toBeFalsy();
-  });
-
   describe('vm$', () => {
     it('should return initial values', (done) => {
       const sut = service.vm$;

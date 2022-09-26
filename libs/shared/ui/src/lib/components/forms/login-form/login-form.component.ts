@@ -12,14 +12,14 @@ import {
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  public form: FormGroup;
+  public loginForm: FormGroup;
 
   public get email(): AbstractControl | null {
-    return this.form.get('email');
+    return this.loginForm.get('email');
   }
 
   public get password(): AbstractControl | null {
-    return this.form.get('password');
+    return this.loginForm.get('password');
   }
 
   @Output() formSubmit = new EventEmitter<{
@@ -27,23 +27,26 @@ export class LoginFormComponent {
     password: string;
   }>();
 
-  // this is a test comment dffdf
   constructor() {
-    this.form = this._buildForm();
+    this.loginForm = this._buildForm();
   }
 
   public submit(): void {
-    this.form.markAllAsTouched();
-    if (!this.form.valid) {
-      return;
+    this.loginForm.markAllAsTouched();
+    if (this.loginForm.valid) {
+      this.formSubmit.emit(this.loginForm.value);
     }
-    this.formSubmit.emit(this.form.value);
   }
 
   private _buildForm(): FormGroup {
-    return new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-    });
+    return new FormGroup(
+      {
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required]),
+      },
+      {
+        updateOn: 'blur',
+      }
+    );
   }
 }
