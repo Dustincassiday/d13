@@ -8,7 +8,7 @@ import { ConfirmPasswordValidator } from '../../../validators';
   styleUrls: ['./signup-form.component.scss'],
 })
 export class SignupFormComponent {
-  public form: FormGroup;
+  public signupForm: FormGroup;
 
   @Output() formSubmit = new EventEmitter<{
     name: string;
@@ -17,31 +17,30 @@ export class SignupFormComponent {
   }>();
 
   public get name() {
-    return this.form.get('name');
+    return this.signupForm.get('name');
   }
 
   public get email() {
-    return this.form.get('email');
+    return this.signupForm.get('email');
   }
 
   public get password() {
-    return this.form.get('password');
+    return this.signupForm.get('password');
   }
 
   public get confirm() {
-    return this.form.get('confirm');
+    return this.signupForm.get('confirm');
   }
 
   constructor() {
-    this.form = this._buildForm();
+    this.signupForm = this._buildForm();
   }
 
   public submit(): void {
-    this.form.markAllAsTouched();
-    if (!this.form.valid) {
-      return;
+    this.signupForm.markAllAsTouched();
+    if (this.signupForm.valid) {
+      this.formSubmit.emit(this.signupForm.value);
     }
-    this.formSubmit.emit(this.form.value);
   }
 
   private _buildForm(): FormGroup {
@@ -53,6 +52,7 @@ export class SignupFormComponent {
         confirm: new FormControl('', [Validators.required]),
       },
       {
+        updateOn: 'blur',
         validators: [ConfirmPasswordValidator('password', 'confirm')],
       }
     );

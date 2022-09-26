@@ -12,23 +12,23 @@ import {
   styleUrls: ['./password-reset-form.component.scss'],
 })
 export class PasswordResetFormComponent {
-  public form: FormGroup;
+  public passwordResetForm: FormGroup;
 
   public get email(): AbstractControl | null {
-    return this.form.get('email');
+    return this.passwordResetForm.get('email');
   }
 
   @Output() formSubmit = new EventEmitter<string>();
 
   constructor() {
-    this.form = this._buildForm();
+    this.passwordResetForm = this._buildForm();
   }
 
-  public handleSubmit(): void {
-    if (!this.form.valid) {
-      return;
+  public submit(): void {
+    this.passwordResetForm.markAllAsTouched();
+    if (this.passwordResetForm.valid) {
+      this.formSubmit.emit(this.email?.value);
     }
-    this.formSubmit.emit(this.email?.value);
   }
 
   private _buildForm(): FormGroup {

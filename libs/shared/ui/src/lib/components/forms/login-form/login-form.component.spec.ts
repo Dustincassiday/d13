@@ -1,10 +1,10 @@
-import { SignupFormComponent } from './signup-form.component';
+import { LoginFormComponent } from './login-form.component';
 
-describe('SignupFormComponent', () => {
-  let sut: SignupFormComponent;
+describe('LoginFormComponent', () => {
+  let sut: LoginFormComponent;
 
   beforeEach(() => {
-    sut = new SignupFormComponent();
+    sut = new LoginFormComponent();
   });
 
   it('should create', () => {
@@ -13,20 +13,18 @@ describe('SignupFormComponent', () => {
 
   describe('submit', () => {
     it('should call markAllAsTouched()', () => {
-      jest.spyOn(sut.signupForm, 'markAllAsTouched');
+      jest.spyOn(sut.loginForm, 'markAllAsTouched');
       sut.submit();
-      expect(sut.signupForm.markAllAsTouched).toHaveBeenCalled();
+      expect(sut.loginForm.markAllAsTouched).toHaveBeenCalled();
     });
 
     it('should dispatch formSubmit event if form valid', () => {
       const testFormValue = {
-        name: 'test',
         email: 'email@test.com',
         password: 'pass',
-        confirm: 'pass',
       };
       jest.spyOn(sut.formSubmit, 'emit');
-      sut.signupForm.setValue(testFormValue);
+      sut.loginForm.setValue(testFormValue);
       sut.submit();
       expect(sut.formSubmit.emit).toHaveBeenCalled();
     });
@@ -39,28 +37,16 @@ describe('SignupFormComponent', () => {
   });
 
   describe('form getters', () => {
-    it('should return the form name field', () => {
-      const testValue = 'test';
-      sut.signupForm.controls['name'].setValue(testValue);
-      expect(sut.name?.value).toBe(testValue);
-    });
-
     it('should return the form email field', () => {
       const testValue = 'test';
-      sut.signupForm.controls['email'].setValue(testValue);
+      sut.loginForm.controls['email'].setValue(testValue);
       expect(sut.email?.value).toBe(testValue);
     });
 
     it('should return the form password field', () => {
       const testValue = 'test';
-      sut.signupForm.controls['password'].setValue(testValue);
+      sut.loginForm.controls['password'].setValue(testValue);
       expect(sut.password?.value).toBe(testValue);
-    });
-
-    it('should return the form confirm field', () => {
-      const testValue = 'test';
-      sut.signupForm.controls['confirm'].setValue(testValue);
-      expect(sut.confirm?.value).toBe(testValue);
     });
   });
 });
