@@ -1,4 +1,6 @@
+import { User } from '@d13/shared/data-access';
+
 export interface ShellViewmodel {
-  title: string;
-  copyright: string;
+  user: User | null;
+  authInitiated: boolean;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthenticationMockService } from '../../data';
+import { AbstractAuthenticationService } from '../../data/abstract';
 import { User } from '../../models';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { User } from '../../models';
 export class AuthenticationService {
   public currentUser$!: Observable<User | null>;
 
-  constructor(private readonly _authService: AuthenticationMockService) {
+  constructor(private readonly _authService: AbstractAuthenticationService) {
     this.currentUser$ = _authService.currentUser$;
   }
 

@@ -19,12 +19,12 @@ describe('ShellFacade', () => {
   });
 
   describe('vm$', () => {
-    it('should return initial values', (done) => {
-      const sut = service.vm$;
-      sut.pipe(first()).subscribe((vm) => {
-        expect(vm.title).toBe('D13 Web App');
-        done();
-      });
-    });
+    // it('should return initial values', (done) => {
+    //   const sut = service.vm$;
+    //   sut.pipe(first()).subscribe((vm) => {
+    //     expect(vm.title).toBe('D13 Web App');
+    //     done();
+    //   });
+    // });
   });
 });

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { WebShellUiModule } from '@d13/web/shell/ui';
 import { WebShellSharedModule } from '@d13/web/shell/shared';
 import { ShellComponent } from './components';
 import { SharedUiModule } from '@d13/shared/ui';
+import {
+  AbstractAuthenticationService,
+  AuthenticationMockService,
+} from '@d13/shared/data-access';
 
 export const routes: Route[] = [
   {
@@ -34,7 +38,12 @@ export const routes: Route[] = [
     RouterModule.forRoot(routes),
   ],
   declarations: [ShellComponent],
-  providers: [DatePipe],
+  providers: [
+    {
+      provide: AbstractAuthenticationService,
+      useClass: AuthenticationMockService,
+    },
+  ],
   exports: [ShellComponent],
 })
 export class WebShellFeatureModule {}

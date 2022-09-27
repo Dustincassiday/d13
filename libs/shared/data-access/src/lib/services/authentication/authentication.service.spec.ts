@@ -1,4 +1,4 @@
-import { AuthenticationMockService } from '../../data';
+import { AuthenticationMockService } from '../../data/mocks/authentication/authentication.mock.service';
 import { AuthenticationService } from './authentication.service';
 
 describe('AuthenticationService', () => {

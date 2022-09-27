@@ -7,8 +7,7 @@ describe('ShellComponent', () => {
 
   beforeEach(() => {
     const mockFacade = {} as any;
-    const mockModalService = {} as any;
-    component = new ShellComponent(mockFacade, mockModalService);
+    component = new ShellComponent(mockFacade);
   });
 
   it('should create', () => {
