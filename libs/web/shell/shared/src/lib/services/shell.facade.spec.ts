@@ -1,6 +1,5 @@
 import { DatePipe } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
-import { first } from 'rxjs';
 
 import { ShellFacade } from './shell.facade';
 

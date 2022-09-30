@@ -1,7 +1,15 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { AbstractAuthenticationService, User } from '@d13/shared/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  combineLatest,
+  EMPTY,
+  map,
+  Observable,
+} from 'rxjs';
+import { AlertModel } from '../models';
 import { ShellViewmodel } from '../models/shell.viewmodel';
 
 @Injectable({
@@ -9,7 +17,7 @@ import { ShellViewmodel } from '../models/shell.viewmodel';
 })
 export class ShellFacade {
   private _authInitiated$: BehaviorSubject<boolean>;
-
+  private _errors$: BehaviorSubject<AlertModel[]>;
   public vm$: Observable<ShellViewmodel>;
 
   constructor(
@@ -17,16 +25,29 @@ export class ShellFacade {
     private readonly _modalService: NgbModal
   ) {
     this._authInitiated$ = new BehaviorSubject(false);
+    this._errors$ = new BehaviorSubject<AlertModel[]>([]);
 
     this.vm$ = combineLatest([
       this._authService.currentUser$,
       this._authInitiated$,
-    ]).pipe(map(([user, auth]) => this._processViewState(user, auth)));
+      this._errors$,
+    ]).pipe(
+      map(([user, auth, errors]) => this._processViewState(user, auth, errors))
+    );
   }
 
   public login(email: string, password: string): void {
     this._authInitiated$.next(true);
-    this._authService.login(email, password);
+    this._errors$.next([]);
+    this._authService.login(email, password).pipe(
+      catchError((err) => {
+        this._errors$.next([
+          ...this._errors$.value,
+          { type: 'auth', message: err.message },
+        ]);
+        return EMPTY;
+      })
+    );
   }
 
   public logout(): void {
@@ -58,7 +79,8 @@ export class ShellFacade {
 
   private _processViewState(
     user: User | null,
-    authInitiated: boolean
+    authInitiated: boolean,
+    errors: AlertModel[]
   ): ShellViewmodel {
     if (authInitiated && user) {
       this._authInitiated$.next(false);
@@ -67,6 +89,7 @@ export class ShellFacade {
     return {
       user,
       authInitiated,
+      errors,
     };
   }
 }

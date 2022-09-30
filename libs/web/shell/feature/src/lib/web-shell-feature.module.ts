@@ -7,7 +7,9 @@ import { ShellComponent } from './components';
 import { SharedUiModule } from '@d13/shared/ui';
 import {
   AbstractAuthenticationService,
+  AbstractLoggerService,
   AuthenticationMockService,
+  LoggerMockService,
 } from '@d13/shared/data-access';
 
 export const routes: Route[] = [
@@ -42,6 +44,10 @@ export const routes: Route[] = [
     {
       provide: AbstractAuthenticationService,
       useClass: AuthenticationMockService,
+    },
+    {
+      provide: AbstractLoggerService,
+      useClass: LoggerMockService,
     },
   ],
   exports: [ShellComponent],

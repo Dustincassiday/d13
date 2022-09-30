@@ -9,9 +9,10 @@ import {
   SignupModalComponent,
 } from './components';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, NgbModule],
   declarations: [
     LoginFormComponent,
     SignupFormComponent,

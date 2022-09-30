@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { User } from '../../../models';
-import { AbstractAuthenticationService } from '../../abstract';
+import {
+  AbstractAuthenticationService,
+  AbstractLoggerService,
+} from '../../abstract';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +16,9 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
     return this._currentUser$.asObservable();
   }
 
-  constructor() {
+  constructor(private readonly _logger: AbstractLoggerService) {
     super();
-    console.log('MOCK SERVICE INITIALIZED');
+    this._logger.log('MOCK AUTH SERVICE INITIALISED');
   }
 
   public login(username: string, password: string): Observable<User> {
