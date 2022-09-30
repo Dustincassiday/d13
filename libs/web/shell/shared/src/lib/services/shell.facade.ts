@@ -1,5 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
-import { AbstractAuthenticationService, User } from '@d13/shared/data-access';
+import { AuthenticationService, User } from '@d13/shared/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   BehaviorSubject,
@@ -21,7 +21,7 @@ export class ShellFacade {
   public vm$: Observable<ShellViewmodel>;
 
   constructor(
-    private readonly _authService: AbstractAuthenticationService,
+    private readonly _authService: AuthenticationService,
     private readonly _modalService: NgbModal
   ) {
     this._authInitiated$ = new BehaviorSubject(false);
