@@ -5,9 +5,11 @@ import { AuthenticationService } from './authentication.service';
 describe('AuthenticationService', () => {
   let sut: AuthenticationService;
   let mockAuthService: AuthenticationMockService;
+  let mockLoggerService: LoggerMockService;
 
   beforeEach(() => {
-    mockAuthService = new AuthenticationMockService({} as LoggerMockService);
+    mockLoggerService = new LoggerMockService();
+    mockAuthService = new AuthenticationMockService(mockLoggerService);
     sut = new AuthenticationService(mockAuthService);
   });
 
