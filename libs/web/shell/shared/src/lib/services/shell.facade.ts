@@ -9,42 +9,46 @@ import {
   map,
   Observable,
 } from 'rxjs';
-import { AlertModel } from '../models';
-import { ShellViewmodel } from '../models/shell.viewmodel';
+import { ShellViewmodel } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShellFacade {
-  private _authInitiated$: BehaviorSubject<boolean>;
-  private _errors$: BehaviorSubject<AlertModel[]>;
-  public vm$: Observable<ShellViewmodel>;
+  private _initialViewState: ShellViewmodel = {
+    user: null,
+    authInitiated: false,
+    errors: [],
+  };
+
+  private _viewState$ = new BehaviorSubject<ShellViewmodel>(
+    this._initialViewState
+  );
+
+  public readonly vm$: Observable<ShellViewmodel>;
 
   constructor(
     private readonly _authService: AuthenticationService,
     private readonly _modalService: NgbModal
   ) {
-    this._authInitiated$ = new BehaviorSubject(false);
-    this._errors$ = new BehaviorSubject<AlertModel[]>([]);
-
     this.vm$ = combineLatest([
       this._authService.currentUser$,
-      this._authInitiated$,
-      this._errors$,
-    ]).pipe(
-      map(([user, auth, errors]) => this._processViewState(user, auth, errors))
-    );
+      this._viewState$,
+    ]).pipe(map(([user, vm]) => this._digestViewState(user, vm)));
   }
 
   public login(email: string, password: string): void {
-    this._authInitiated$.next(true);
-    this._errors$.next([]);
+    this._viewState$.next({
+      ...this._viewState$.value,
+      authInitiated: true,
+      errors: [],
+    });
     this._authService.login(email, password).pipe(
       catchError((err) => {
-        this._errors$.next([
-          ...this._errors$.value,
-          { type: 'auth', message: err.message },
-        ]);
+        this._viewState$.next({
+          ...this._viewState$.value,
+          errors: [{ type: 'auth', message: err.message }],
+        });
         return EMPTY;
       })
     );
@@ -55,7 +59,11 @@ export class ShellFacade {
   }
 
   public signup(email: string, password: string): void {
-    this._authInitiated$.next(true);
+    this._viewState$.next({
+      ...this._viewState$.value,
+      authInitiated: true,
+      errors: [],
+    });
     this._authService.signup(email, password);
   }
 
@@ -77,19 +85,14 @@ export class ShellFacade {
     }
   }
 
-  private _processViewState(
+  private _digestViewState(
     user: User | null,
-    authInitiated: boolean,
-    errors: AlertModel[]
+    viewState: ShellViewmodel
   ): ShellViewmodel {
-    if (authInitiated && user) {
-      this._authInitiated$.next(false);
+    if (viewState.authInitiated && user) {
+      this._viewState$.next({ ...viewState, authInitiated: false });
       this.dismissAllModals();
     }
-    return {
-      user,
-      authInitiated,
-      errors,
-    };
+    return { ...viewState, user };
   }
 }

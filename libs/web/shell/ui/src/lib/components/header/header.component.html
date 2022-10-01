@@ -26,7 +26,7 @@
             (click)="btnClick.emit('logout')">
             Logout
           </button>
-          <button class="btn btn-info my-2 my-sm-0" type="button" (click)="btnClick.emit('signup')">
+          <button *ngIf="!user" class="btn btn-info my-2 my-sm-0" type="button" (click)="btnClick.emit('signup')">
             Signup
           </button>
         </form>
