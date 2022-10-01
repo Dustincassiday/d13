@@ -4,5 +4,5 @@ import { AlertModel } from './alert.model';
 export interface ShellViewmodel {
   user: User | null;
   authInitiated: boolean;
-  errors?: AlertModel[];
+  errors: AlertModel[];
 }

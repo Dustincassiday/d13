@@ -7,6 +7,7 @@ import {
   LoggerMockService,
 } from '@d13/shared/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EMPTY, throwError } from 'rxjs';
 import { ShellFacade } from './shell.facade';
 
 describe('ShellFacade', () => {
@@ -50,6 +51,15 @@ describe('ShellFacade', () => {
       const spy = jest.spyOn(authService, 'login');
       sut.login(data.user, data.pass);
       expect(spy).toHaveBeenCalledWith(data.user, data.pass);
+    });
+
+    it('should call modalService.dismissAll method on success', (done) => {
+      const data = { user: 'user', pass: 'pass' };
+      sut.login(data.user, data.pass);
+      sut.vm$.subscribe(() => {
+        expect(modalService.dismissAll).toHaveBeenCalled();
+        done();
+      });
     });
   });
 
