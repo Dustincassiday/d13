@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { User } from '../../../models';
+import {
+  AbstractAuthenticationService,
+  AbstractLoggerService,
+} from '../../abstract';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationMockService {
+export class AuthenticationMockService extends AbstractAuthenticationService {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
 
   public get currentUser$(): Observable<User | null> {
     return this._currentUser$.asObservable();
+  }
+
+  constructor(private readonly _logger: AbstractLoggerService) {
+    super();
   }
 
   public login(username: string, password: string): Observable<User> {
@@ -38,7 +46,7 @@ export class AuthenticationMockService {
       ...user.metadata,
       ...[{ signedUpWith: `email: ${email} pass: ${password}` }],
     ];
-
+    this._currentUser$.next(user);
     return of(user);
   }
 

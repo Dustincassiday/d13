@@ -1,0 +1,9 @@
+a {
+  svg {
+    transition: color 0.75s;
+
+    &:hover {
+      color: #1a1a1a;
+    }
+  }
+}

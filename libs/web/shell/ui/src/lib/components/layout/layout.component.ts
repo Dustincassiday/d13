@@ -10,5 +10,5 @@ export class LayoutComponent {
   public vm: ShellViewmodel | null = null;
 
   @Output()
-  public headerBtnClick = new EventEmitter<'login' | 'signup'>();
+  public headerBtnClick = new EventEmitter<'login' | 'logout' | 'signup'>();
 }

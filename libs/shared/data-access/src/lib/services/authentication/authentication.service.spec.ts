@@ -1,12 +1,15 @@
-import { AuthenticationMockService } from '../../data';
+import { LoggerMockService } from '../../data/mocks';
+import { AuthenticationMockService } from '../../data/mocks/authentication/authentication.mock.service';
 import { AuthenticationService } from './authentication.service';
 
 describe('AuthenticationService', () => {
   let sut: AuthenticationService;
   let mockAuthService: AuthenticationMockService;
+  let mockLoggerService: LoggerMockService;
 
   beforeEach(() => {
-    mockAuthService = new AuthenticationMockService();
+    mockLoggerService = new LoggerMockService();
+    mockAuthService = new AuthenticationMockService(mockLoggerService);
     sut = new AuthenticationService(mockAuthService);
   });
 

@@ -3,6 +3,9 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
+  <ngb-alert type="danger" [dismissible]="false">
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+  </ngb-alert>
   <ng-content></ng-content>
 </div>
 <div class="modal-footer d-flex justify-content-between">

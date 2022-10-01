@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ShellViewmodel } from '@d13/web/shell/shared';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'd13-footer',
   templateUrl: './footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @Input() vm: ShellViewmodel | null = null;
+  public currentDate = Date.now();
 }
