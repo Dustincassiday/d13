@@ -45,12 +45,10 @@ export class ShellComponent {
   }
 
   public handleLoginFormSubmit(formValues: { [key: string]: string }) {
-    console.log('Login', formValues);
     this._facade.login(formValues['email'], formValues['password']);
   }
 
   public handleSignupFormSubmit(formValues: { [key: string]: string }) {
-    console.log('Signup', formValues);
     this._facade.signup(formValues['email'], formValues['password']);
   }
 
