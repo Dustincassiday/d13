@@ -18,7 +18,6 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
 
   constructor(private readonly _logger: AbstractLoggerService) {
     super();
-    this._logger.log('MOCK AUTH SERVICE INITIALISED');
   }
 
   public login(username: string, password: string): Observable<User> {
