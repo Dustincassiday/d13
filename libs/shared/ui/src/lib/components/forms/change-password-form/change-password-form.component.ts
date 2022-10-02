@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'd13-change-password-form',
@@ -6,8 +6,4 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./change-password-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChangePasswordFormComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class ChangePasswordFormComponent {}
