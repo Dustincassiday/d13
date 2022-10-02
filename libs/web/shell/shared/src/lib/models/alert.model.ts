@@ -1,4 +1,13 @@
 export interface AlertModel {
-  type: string;
+  category: string;
+  type:
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'primary'
+    | 'secondary'
+    | 'light'
+    | 'dark';
   message: string;
 }
