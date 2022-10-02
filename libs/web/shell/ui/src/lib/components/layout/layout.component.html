@@ -1,5 +1,6 @@
 <div *ngIf="vm" class="d-flex flex-column h-100">
-  <d13-header [user]="vm.user" (btnClick)="headerBtnClick.emit($event)"></d13-header>
+  <d13-header [user]="vm.user" (loginBtnClick)="loginBtnClick.emit()" (logoutBtnClick)="logoutBtnClick.emit()"
+    (signupBtnClick)="signupBtnClick.emit()"></d13-header>
   <main class="flex-shrink-0">
     <div class="container">
       <ng-content select="[main-content]"></ng-content>

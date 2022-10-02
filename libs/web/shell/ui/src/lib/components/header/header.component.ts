@@ -13,11 +13,11 @@ import { User } from '@d13/shared/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input()
-  public user: User | null = null;
+  @Input() public user: User | null = null;
 
-  @Output()
-  public btnClick = new EventEmitter<'login' | 'logout' | 'signup'>();
+  @Output() public loginBtnClick = new EventEmitter();
+  @Output() public signupBtnClick = new EventEmitter();
+  @Output() public logoutBtnClick = new EventEmitter();
 
   public collapsed = true;
 }

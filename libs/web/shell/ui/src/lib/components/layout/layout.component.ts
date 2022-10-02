@@ -6,9 +6,9 @@ import { ShellViewmodel } from '@d13/web/shell/shared';
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent {
-  @Input()
-  public vm: ShellViewmodel | null = null;
+  @Input() public vm: ShellViewmodel | null = null;
 
-  @Output()
-  public headerBtnClick = new EventEmitter<'login' | 'logout' | 'signup'>();
+  @Output() public loginBtnClick = new EventEmitter();
+  @Output() public signupBtnClick = new EventEmitter();
+  @Output() public logoutBtnClick = new EventEmitter();
 }

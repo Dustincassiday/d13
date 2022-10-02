@@ -43,7 +43,11 @@ export class ShellFacade {
       this._viewState$.next({
         ...this._viewState$.value,
         errors: [
-          { type: 'auth', message: 'Login error. Kindly go fuck yourself.' },
+          {
+            category: 'auth',
+            type: 'danger',
+            message: '<strong>Login error.</strong> Kindly go fuck yourself.',
+          },
         ],
       });
     }
