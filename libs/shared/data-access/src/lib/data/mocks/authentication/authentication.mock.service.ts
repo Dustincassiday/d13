@@ -55,10 +55,6 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
     return of(user);
   }
 
-  public updateProfile(): Observable<void> {
-    return of();
-  }
-
   private _getMockUser(): User {
     return {
       id: '12345',

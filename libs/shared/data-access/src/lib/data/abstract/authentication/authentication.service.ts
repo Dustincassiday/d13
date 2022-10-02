@@ -15,6 +15,4 @@ export abstract class AbstractAuthenticationService {
   abstract resetPassword(email: string): Observable<void>;
 
   abstract signup(email: string, password: string): Observable<User>;
-
-  abstract updateProfile(): Observable<void>;
 }
