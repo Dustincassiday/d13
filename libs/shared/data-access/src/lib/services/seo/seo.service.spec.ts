@@ -38,9 +38,11 @@ describe('SeoService', () => {
       expect(meta.addTag).toHaveBeenCalledWith(arg);
     });
   });
-  it('should call meta.addTags w/ arg', () => {
-    const arg: MetaDefinition[] = [{ name: 'test', content: 'test' }];
-    sut.addMetaTags(arg);
-    expect(meta.addTags).toHaveBeenCalledWith(arg);
+  describe('addMetaTag', () => {
+    it('should call meta.addTags w/ arg', () => {
+      const arg: MetaDefinition[] = [{ name: 'test', content: 'test' }];
+      sut.addMetaTags(arg);
+      expect(meta.addTags).toHaveBeenCalledWith(arg);
+    });
   });
 });
