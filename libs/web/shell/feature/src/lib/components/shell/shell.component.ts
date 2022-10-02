@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 import { ShellFacade, ShellViewmodel } from '@d13/web/shell/shared';
 import { Observable } from 'rxjs';
 
@@ -15,33 +10,17 @@ import { Observable } from 'rxjs';
 export class ShellComponent {
   public vm$: Observable<ShellViewmodel>;
 
-  @ViewChild('login')
-  public loginRef!: TemplateRef<unknown>;
-
-  @ViewChild('signup')
-  public signupRef!: TemplateRef<unknown>;
-
   constructor(private readonly _facade: ShellFacade) {
     this.vm$ = this._facade.vm$;
   }
 
-  public handleBtnClick(id: string): void {
-    let modalRef: TemplateRef<unknown> | null = null;
-    if (id === 'logout') {
-      return this._facade.logout();
-    }
-    if (id === 'login') {
-      modalRef = this.loginRef;
-    }
-    if (id === 'signup') {
-      modalRef = this.signupRef;
-    }
-
+  public handleOpenModal(modalRef: TemplateRef<unknown>): void {
     this._dismissAllModals();
+    this._facade.openModal(modalRef);
+  }
 
-    if (modalRef) {
-      this._facade.openModal(modalRef);
-    }
+  public handleLogout(): void {
+    this._facade.logout();
   }
 
   public handleLoginFormSubmit(formValues: { [key: string]: string }) {
@@ -50,6 +29,10 @@ export class ShellComponent {
 
   public handleSignupFormSubmit(formValues: { [key: string]: string }) {
     this._facade.signup(formValues['email'], formValues['password']);
+  }
+
+  public handlePasswordResetFormSubmit(email: string) {
+    this._facade.resetPassword(email);
   }
 
   public handleCloseModal() {

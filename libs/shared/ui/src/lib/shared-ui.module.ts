@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
+  ChangePasswordFormComponent,
+  ChangePasswordModalComponent,
   LoginFormComponent,
   LoginModalComponent,
   PasswordResetFormComponent,
+  PasswordResetModalComponent,
   SignupFormComponent,
   SignupModalComponent,
 } from './components';
@@ -19,12 +22,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PasswordResetFormComponent,
     LoginModalComponent,
     SignupModalComponent,
+    ChangePasswordFormComponent,
+    ChangePasswordModalComponent,
+    PasswordResetModalComponent,
   ],
   exports: [
     LoginModalComponent,
     SignupModalComponent,
     LoginFormComponent,
     SignupFormComponent,
+    PasswordResetModalComponent,
+    PasswordResetFormComponent,
   ],
 })
 export class SharedUiModule {}

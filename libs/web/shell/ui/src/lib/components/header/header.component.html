@@ -18,15 +18,13 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button *ngIf="!user" class="btn btn-success my-2 mx-1 my-sm-0" type="button"
-            (click)="btnClick.emit('login')">
+          <button *ngIf="!user" class="btn btn-success my-2 mx-1 my-sm-0" type="button" (click)="loginBtnClick.emit()">
             Login
           </button>
-          <button *ngIf="user" class="btn btn-success my-2 mx-1 my-sm-0" type="button"
-            (click)="btnClick.emit('logout')">
+          <button *ngIf="user" class="btn btn-success my-2 mx-1 my-sm-0" type="button" (click)="logoutBtnClick.emit()">
             Logout
           </button>
-          <button *ngIf="!user" class="btn btn-info my-2 my-sm-0" type="button" (click)="btnClick.emit('signup')">
+          <button *ngIf="!user" class="btn btn-info my-2 my-sm-0" type="button" (click)="signupBtnClick.emit('signup')">
             Signup
           </button>
         </form>
