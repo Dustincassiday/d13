@@ -20,6 +20,11 @@ describe('SeoService', () => {
     sut = new SeoService(title, meta);
   });
 
+  it('should call meta.addTags on creation', () => {
+    sut = new SeoService(title, meta);
+    expect(meta.addTags).toHaveBeenCalled();
+  });
+
   it('should be created', () => {
     expect(sut).toBeTruthy();
   });
