@@ -21,6 +21,11 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
   }
 
   public login(username: string, password: string): Observable<User> {
+    if (password === 'error') {
+      this._logger.error('Login Error', 'AuthenticationMockService');
+      throw new Error('Login Error');
+    }
+
     const user = this._getMockUser();
     user.metadata = [
       ...user.metadata,
@@ -48,10 +53,6 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
     ];
     this._currentUser$.next(user);
     return of(user);
-  }
-
-  public updateProfile(): Observable<void> {
-    return of();
   }
 
   private _getMockUser(): User {

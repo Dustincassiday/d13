@@ -14,6 +14,7 @@ describe('ShellComponent', () => {
       signup: jest.fn(),
       openModal: jest.fn(),
       dismissAllModals: jest.fn(),
+      resetErrors: jest.fn(),
     } as any;
     sut = new ShellComponent(facade);
   });
@@ -53,10 +54,17 @@ describe('ShellComponent', () => {
     });
   });
 
-  describe('handleSignupFormSubmit', () => {
-    it('should call facade.signup', () => {
-      sut.handleSignupFormSubmit({ user: '', pass: '' });
-      expect(facade.signup).toHaveBeenCalled();
+  describe('handleLoginFormSubmit', () => {
+    it('should call facade.login', () => {
+      sut.handleLoginFormSubmit({ user: '', pass: '' });
+      expect(facade.login).toHaveBeenCalled();
+    });
+  });
+
+  describe('handleCloseModal', () => {
+    it('should call facade.resetErrors', () => {
+      sut.handleCloseModal();
+      expect(facade.resetErrors).toHaveBeenCalled();
     });
   });
 });

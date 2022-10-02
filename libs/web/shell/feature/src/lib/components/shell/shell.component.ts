@@ -52,6 +52,10 @@ export class ShellComponent {
     this._facade.signup(formValues['email'], formValues['password']);
   }
 
+  public handleCloseModal() {
+    this._facade.resetErrors();
+  }
+
   private _dismissAllModals(): void {
     this._facade.dismissAllModals();
   }

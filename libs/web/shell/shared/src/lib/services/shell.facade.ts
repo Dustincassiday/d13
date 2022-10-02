@@ -1,14 +1,7 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { AuthenticationService, User } from '@d13/shared/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  BehaviorSubject,
-  catchError,
-  combineLatest,
-  EMPTY,
-  map,
-  Observable,
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 import { ShellViewmodel } from '../models';
 
 @Injectable({
@@ -43,15 +36,17 @@ export class ShellFacade {
       authInitiated: true,
       errors: [],
     });
-    this._authService.login(email, password).pipe(
-      catchError((err) => {
-        this._viewState$.next({
-          ...this._viewState$.value,
-          errors: [{ type: 'auth', message: err.message }],
-        });
-        return EMPTY;
-      })
-    );
+
+    try {
+      this._authService.login(email, password);
+    } catch (err: unknown) {
+      this._viewState$.next({
+        ...this._viewState$.value,
+        errors: [
+          { type: 'auth', message: 'Login error. Kindly go fuck yourself.' },
+        ],
+      });
+    }
   }
 
   public logout(): void {
@@ -83,6 +78,13 @@ export class ShellFacade {
     if (this._modalService.hasOpenModals()) {
       this._modalService.dismissAll();
     }
+  }
+
+  public resetErrors(): void {
+    this._viewState$.next({
+      ...this._viewState$.value,
+      errors: [],
+    });
   }
 
   private _digestViewState(
