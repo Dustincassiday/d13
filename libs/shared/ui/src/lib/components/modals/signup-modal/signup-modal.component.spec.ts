@@ -1,22 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SignupModalComponent } from './signup-modal.component';
 
 describe('SignupModalComponent', () => {
-  let component: SignupModalComponent;
-  let fixture: ComponentFixture<SignupModalComponent>;
+  let sut: SignupModalComponent;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [SignupModalComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(SignupModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    sut = new SignupModalComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
+  });
+
+  describe('ngOnDestroy', () => {
+    it('should emit closeModal event when called', () => {
+      const spy = jest.spyOn(sut.closeModal, 'emit');
+      sut.ngOnDestroy();
+      expect(spy).toHaveBeenCalled();
+    });
   });
 });
