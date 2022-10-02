@@ -7,7 +7,6 @@ import {
   LoggerMockService,
 } from '@d13/shared/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EMPTY, throwError } from 'rxjs';
 import { ShellFacade } from './shell.facade';
 
 describe('ShellFacade', () => {

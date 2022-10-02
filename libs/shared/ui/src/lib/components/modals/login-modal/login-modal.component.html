@@ -3,8 +3,8 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-  <ngb-alert type="danger" [dismissible]="false">
-    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+  <ngb-alert *ngFor="let alert of alerts" type="danger" [dismissible]="false" role="alert">
+    {{ alert.message }}
   </ngb-alert>
   <ng-content></ng-content>
 </div>
