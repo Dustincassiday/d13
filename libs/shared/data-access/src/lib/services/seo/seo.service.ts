@@ -10,7 +10,7 @@ export class SeoService {
   }
 
   public setTitle(title: string): void {
-    this._title.setTitle(title);
+    this._title.setTitle(title ? `${title} - D13` : 'D13');
   }
 
   public addMetaTag(tag: MetaDefinition): void {

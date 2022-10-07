@@ -20,6 +20,7 @@
       "@d13/shared/util": ["libs/shared/util/src/index.ts"],
       "@d13/web/account/feature": ["libs/web/account/feature/src/index.ts"],
       "@d13/web/account/ui": ["libs/web/account/ui/src/index.ts"],
+      "@d13/web/contact/feature": ["libs/web/contact/feature/src/index.ts"],
       "@d13/web/landing/feature": ["libs/web/landing/feature/src/index.ts"],
       "@d13/web/landing/ui": ["libs/web/landing/ui/src/index.ts"],
       "@d13/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],

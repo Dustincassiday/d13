@@ -5,6 +5,7 @@ export * from './forms/signup-form/signup-form.component';
 export * from './forms/password-reset-form/password-reset-form.component';
 export * from './forms/change-password-form/change-password-form.component';
 export * from './forms/password-reset-form/password-reset-form.component';
+export * from './forms/contact-form/contact-form.component';
 
 // MODALS
 export * from './modals/login-modal/login-modal.component';

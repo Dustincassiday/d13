@@ -20,6 +20,12 @@ export const routes: Route[] = [
       import('@d13/web/account/feature').then((m) => m.WebAccountFeatureModule),
   },
   {
+    path: 'contact',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('@d13/web/contact/feature').then((m) => m.WebContactFeatureModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadChildren: () =>

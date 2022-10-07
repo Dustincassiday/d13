@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   ChangePasswordFormComponent,
   ChangePasswordModalComponent,
+  ContactFormComponent,
   LoginFormComponent,
   LoginModalComponent,
   PasswordResetFormComponent,
@@ -25,14 +26,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChangePasswordFormComponent,
     ChangePasswordModalComponent,
     PasswordResetModalComponent,
+    ContactFormComponent,
   ],
   exports: [
-    LoginModalComponent,
-    SignupModalComponent,
     LoginFormComponent,
     SignupFormComponent,
-    PasswordResetModalComponent,
     PasswordResetFormComponent,
+    LoginModalComponent,
+    SignupModalComponent,
+    ChangePasswordFormComponent,
+    ChangePasswordModalComponent,
+    PasswordResetModalComponent,
+    ContactFormComponent,
   ],
 })
 export class SharedUiModule {}

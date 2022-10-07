@@ -33,7 +33,12 @@ describe('SeoService', () => {
     it('should call title.setTitle w/ arg', () => {
       const arg = 'test title';
       sut.setTitle(arg);
-      expect(title.setTitle).toHaveBeenCalledWith(arg);
+      expect(title.setTitle).toHaveBeenCalledWith(`${arg} - D13`);
+    });
+
+    it('should call title.setTitle w/ falsy arg', () => {
+      sut.setTitle('');
+      expect(title.setTitle).toHaveBeenCalledWith('D13');
     });
   });
   describe('addMetaTag', () => {
