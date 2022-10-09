@@ -13,7 +13,8 @@
       <div [ngbCollapse]="collapsed" class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a routerLink="/" routerLinkActive="active" (click)="collapsed = true" class="nav-link px-2">Home</a>
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapsed = true" class="nav-link px-2">Home</a>
           </li>
           <li class="nav-item">
             <a routerLink="/account" routerLinkActive="active" (click)="collapsed = true"
