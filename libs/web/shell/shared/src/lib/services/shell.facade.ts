@@ -46,7 +46,7 @@ export class ShellFacade {
           {
             category: 'auth',
             type: 'danger',
-            message: '<strong>Login error.</strong> Kindly go fuck yourself.',
+            message: `<strong>Login error.</strong> ${(<Error>err).message}`,
           },
         ],
       });

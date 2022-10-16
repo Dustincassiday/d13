@@ -1,24 +1,24 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Login</h4>
+  <h4 class="modal-title" data-cy="modal-title">Login</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-  <ngb-alert *ngFor="let alert of alerts" [type]="alert.type" [dismissible]="false" role="alert">
+  <ngb-alert *ngFor="let alert of alerts" [type]="alert.type" [dismissible]="false" role="alert" data-cy="alert">
     <span [innerHtml]="alert.message"></span>
   </ngb-alert>
   <ng-content></ng-content>
 </div>
 <div class="modal-footer d-flex justify-content-between">
   <span>
-    <button type="button" class="px-0 btn btn-link" (click)="newUserBtnClick.emit()">
+    <button type="button" class="px-0 btn btn-link" data-cy="modal-btn" (click)="newUserBtnClick.emit()">
       New User
     </button>
     |
-    <button type="button" class="px-0 btn btn-link" (click)="forgotPasswordBtnClick.emit()">
+    <button type="button" class="px-0 btn btn-link" data-cy="modal-btn" (click)="forgotPasswordBtnClick.emit()">
       Forgot Password
     </button>
   </span>
-  <button type="button" class="btn btn-success" (click)="loginBtnClick.emit()">
+  <button type="button" class="btn btn-success" data-cy="modal-btn" (click)="loginBtnClick.emit()">
     Login
   </button>
 </div>

@@ -7,9 +7,16 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SvgComponent } from './components/svg/svg-icons.component';
 import { SharedUiModule } from '@d13/shared/ui';
+import { SharedUtilModule } from '@d13/shared/util';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, SharedUiModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    SharedUiModule,
+    SharedUtilModule,
+  ],
   declarations: [
     LayoutComponent,
     HeaderComponent,

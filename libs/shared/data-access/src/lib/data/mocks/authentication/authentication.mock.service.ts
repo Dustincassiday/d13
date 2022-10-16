@@ -21,9 +21,17 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
   }
 
   public login(username: string, password: string): Observable<User> {
-    if (password === 'error') {
-      this._logger.error('Login Error', 'AuthenticationMockService');
-      throw new Error('Login Error');
+    if (username === 'error@error') {
+      this._logger.error('Invalid login', 'AuthenticationMockService');
+      throw new Error('Invalid login');
+    }
+
+    if (username === 'locked@error') {
+      this._logger.error(
+        'This account has been locked',
+        'AuthenticationMockService'
+      );
+      throw new Error('This account has been locked');
     }
 
     const user = this._getMockUser();
