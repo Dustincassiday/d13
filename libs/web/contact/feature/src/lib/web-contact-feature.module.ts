@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedUtilModule } from '@d13/shared/util';
+import { SharedUiModule } from '@d13/shared/ui';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), SharedUtilModule],
+  imports: [CommonModule, SharedUiModule, RouterModule.forChild(routes)],
   declarations: [ContactComponent],
 })
 export class WebContactFeatureModule {}

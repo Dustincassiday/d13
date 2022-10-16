@@ -14,16 +14,11 @@ import {
 } from './components';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SharedUtilModule } from '@d13/shared/util';
+import { UnsafeHtmlPipe } from './pipes';
+import { DataCyDirective } from './directives';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    NgbModule,
-    SharedUtilModule,
-  ],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, NgbModule],
   declarations: [
     LoginFormComponent,
     SignupFormComponent,
@@ -34,6 +29,8 @@ import { SharedUtilModule } from '@d13/shared/util';
     ChangePasswordModalComponent,
     PasswordResetModalComponent,
     ContactFormComponent,
+    UnsafeHtmlPipe,
+    DataCyDirective,
   ],
   exports: [
     LoginFormComponent,
@@ -45,6 +42,8 @@ import { SharedUtilModule } from '@d13/shared/util';
     ChangePasswordModalComponent,
     PasswordResetModalComponent,
     ContactFormComponent,
+    UnsafeHtmlPipe,
+    DataCyDirective,
   ],
 })
 export class SharedUiModule {}
