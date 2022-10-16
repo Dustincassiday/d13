@@ -14,9 +14,16 @@ import {
 } from './components';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedUtilModule } from '@d13/shared/util';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, NgbModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    NgbModule,
+    SharedUtilModule,
+  ],
   declarations: [
     LoginFormComponent,
     SignupFormComponent,
