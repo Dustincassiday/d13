@@ -48,7 +48,7 @@ describe('AuthenticationService', () => {
       }).toThrow('Invalid login');
     });
 
-    it('should throw an error on lockec login', () => {
+    it('should throw an error on locked login', () => {
       expect(() => {
         sut.login('locked@error', 'pass');
       }).toThrow('This account has been locked');
