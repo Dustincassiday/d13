@@ -16,7 +16,7 @@ Feature: Login Modal
     And I should not see the "login" nav item
     And I should not see the "signup" nav item
 
-  Scenario: Error on empty fields
+  Scenario: Error on required fields
     When the "email" input is empty
     And the "password" input is empty
     When I click on the modal "Login" button
