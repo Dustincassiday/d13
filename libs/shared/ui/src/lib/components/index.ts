@@ -12,3 +12,6 @@ export * from './modals/login-modal/login-modal.component';
 export * from './modals/signup-modal/signup-modal.component';
 export * from './modals/change-password-modal/change-password-modal.component';
 export * from './modals/password-reset-modal/password-reset-modal.component';
+
+// CONTROLS
+export * from './controls/tip-control/tip-control.component';

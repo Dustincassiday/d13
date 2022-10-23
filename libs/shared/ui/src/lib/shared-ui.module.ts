@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UnsafeHtmlPipe } from './pipes';
 import { DataCyDirective } from './directives';
+import { TipControlComponent } from './components/controls/tip-control/tip-control.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule, NgbModule],
@@ -31,6 +32,7 @@ import { DataCyDirective } from './directives';
     ContactFormComponent,
     UnsafeHtmlPipe,
     DataCyDirective,
+    TipControlComponent,
   ],
   exports: [
     LoginFormComponent,
@@ -44,6 +46,7 @@ import { DataCyDirective } from './directives';
     ContactFormComponent,
     UnsafeHtmlPipe,
     DataCyDirective,
+    TipControlComponent,
   ],
 })
 export class SharedUiModule {}

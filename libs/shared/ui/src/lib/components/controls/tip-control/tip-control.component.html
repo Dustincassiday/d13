@@ -1,0 +1,19 @@
+<div class="d13-tip-control">
+  <ng-container *ngTemplateOutlet="controlTemplate ? controlTemplate : defaultTemplate; context: { $implicit: this }">
+  </ng-container>
+</div>
+
+<ng-template #defaultTemplate>
+  <ng-container *ngIf="presets.length">
+    <button [value]="preset" class="btn-tip-preset btn-primary btn me-2" *ngFor="let preset of presets"
+      (click)="addTipByPercentage(preset)">{{ preset
+      }}%</button>
+    <button *ngIf="allowOther" class="btn-tip-preset btn-primary btn"
+      (click)="this.showTipInput = !this.showTipInput">Other</button>
+  </ng-container>
+  <div classs="" *ngIf="showTipInput">
+    <label for="tipAmount" class="form-label">Tip</label>
+    <input *ngIf="showTipInput" dir="rtl" placeholder="0.00" name="tipAmount" [value]="tipValue"
+      (change)="handleInputChange(amountInput)" class="form-control" aria-describedby="Tip amount" #amountInput />
+  </div>
+</ng-template>

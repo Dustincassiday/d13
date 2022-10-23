@@ -1,0 +1,18 @@
+<h1>Account Settings</h1>
+
+<form [formGroup]="tipForm">
+  <d13-tip-control formControlName="amount"></d13-tip-control>
+  <ng-template #basicTipControlTemplate let-control>
+    <input dir="rtl" placeholder="0.00" name="tipAmount" [value]="control.tipValue"
+      (change)="control.handleInputChange(amountInput)" class="form-control" aria-describedby="Tip amount"
+      #amountInput />
+  </ng-template>
+  <input class="my-4 btn btn-success" type="submit" name="submit">
+</form>
+
+{{ tipForm.value | json }}
+
+<ng-template #basicTipControlTemplate let-control>
+  <input dir="rtl" placeholder="0.00" name="tipAmount" [value]="control.tipValue"
+    (change)="control.handleInputChange(amountInput)" class="form-control" aria-describedby="Tip amount" #amountInput />
+</ng-template>
