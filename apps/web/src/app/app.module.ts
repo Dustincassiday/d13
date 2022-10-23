@@ -5,7 +5,10 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, WebShellFeatureModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    WebShellFeatureModule,
+  ],
   providers: [
     {
       provide: 'SHOW_DATA_CY',
