@@ -60,7 +60,7 @@ export class ShellFacade {
               },
             ],
           });
-          return of(false);
+          return of(void 0);
         })
       )
       .subscribe();
@@ -92,7 +92,7 @@ export class ShellFacade {
               },
             ],
           });
-          return of(false);
+          return of(void 0);
         })
       )
       .subscribe();

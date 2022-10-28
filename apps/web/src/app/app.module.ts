@@ -9,6 +9,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import {
   AbstractAuthenticationService,
   AbstractLoggerService,
+  AuthenticationFirebaseService,
   AuthenticationMockService,
   LoggerMockService,
 } from '@d13/shared/data-access';
@@ -28,7 +29,7 @@ import {
     },
     {
       provide: AbstractAuthenticationService,
-      useClass: AuthenticationMockService,
+      useClass: AuthenticationFirebaseService,
     },
     {
       provide: AbstractLoggerService,
