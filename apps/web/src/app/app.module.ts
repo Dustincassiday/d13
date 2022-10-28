@@ -8,9 +8,10 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import {
   AbstractAuthenticationService,
+  AbstractLocationService,
   AbstractLoggerService,
   AuthenticationFirebaseService,
-  AuthenticationMockService,
+  LocationMockService,
   LoggerMockService,
 } from '@d13/shared/data-access';
 @NgModule({
@@ -34,6 +35,10 @@ import {
     {
       provide: AbstractLoggerService,
       useClass: LoggerMockService,
+    },
+    {
+      provide: AbstractLocationService,
+      useClass: LocationMockService,
     },
   ],
   bootstrap: [AppComponent],
