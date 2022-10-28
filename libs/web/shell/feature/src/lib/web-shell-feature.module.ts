@@ -5,12 +5,6 @@ import { WebShellUiModule } from '@d13/web/shell/ui';
 import { WebShellSharedModule } from '@d13/web/shell/shared';
 import { ShellComponent } from './components';
 import { SharedUiModule } from '@d13/shared/ui';
-import {
-  AbstractAuthenticationService,
-  AbstractLoggerService,
-  AuthenticationMockService,
-  LoggerMockService,
-} from '@d13/shared/data-access';
 
 export const routes: Route[] = [
   {
@@ -46,16 +40,7 @@ export const routes: Route[] = [
     RouterModule.forRoot(routes),
   ],
   declarations: [ShellComponent],
-  providers: [
-    {
-      provide: AbstractAuthenticationService,
-      useClass: AuthenticationMockService,
-    },
-    {
-      provide: AbstractLoggerService,
-      useClass: LoggerMockService,
-    },
-  ],
+  providers: [],
   exports: [ShellComponent],
 })
 export class WebShellFeatureModule {}

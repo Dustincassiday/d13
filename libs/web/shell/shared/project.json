@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shell/shared"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shell/shared"],
       "options": {
         "jestConfig": "libs/web/shell/shared/jest.config.ts",
         "passWithNoTests": true

@@ -3,6 +3,9 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
+  <ngb-alert *ngFor="let alert of alerts" [type]="alert.type" [dismissible]="false" role="alert" data-cy="alert">
+    <span [innerHtml]="alert.message"></span>
+  </ngb-alert>
   <ng-content></ng-content>
 </div>
 <div class="modal-footer d-flex justify-content-between">

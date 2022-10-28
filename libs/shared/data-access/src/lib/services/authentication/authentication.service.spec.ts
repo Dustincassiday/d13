@@ -1,5 +1,4 @@
-import { LoggerMockService } from '../../data/mocks';
-import { AuthenticationMockService } from '../../data/mocks/authentication/authentication.mock.service';
+import { AuthenticationMockService, LoggerMockService } from '../../data/mocks';
 import { AuthenticationService } from './authentication.service';
 
 describe('AuthenticationService', () => {
@@ -42,8 +41,10 @@ describe('AuthenticationService', () => {
       expect(mockAuthService.login).toHaveBeenCalledWith(data.user, data.pass);
     });
 
-    it('should return a user observable', (done) => {
-      sut.login('user', 'pass').subscribe((user) => {
+    it('should set currentUser$ on success', (done) => {
+      sut.login('user', 'pass').subscribe();
+
+      sut.currentUser$.subscribe((user) => {
         expect(user?.id).toBe('12345');
         done();
       });
@@ -78,8 +79,10 @@ describe('AuthenticationService', () => {
       );
     });
 
-    it('should return a user observable', (done) => {
-      sut.signup('test@test.com', 'pass').subscribe((user) => {
+    it('should set currenUser$ on success', (done) => {
+      sut.signup('test@test.com', 'pass').subscribe();
+
+      sut.currentUser$.subscribe((user) => {
         expect(user?.id).toBe('12345');
         done();
       });
