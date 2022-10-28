@@ -40,8 +40,8 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
     return of(void 0);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public resetPassword(email: string): Observable<void> {
+    this._logger.log(`Reset password requested for ${email}`);
     return of(void 0);
   }
 
