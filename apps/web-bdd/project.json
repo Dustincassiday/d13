@@ -1,4 +1,5 @@
 {
+  "name": "web-bdd",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/web-bdd/src",
   "projectType": "application",
