@@ -4,3 +4,4 @@ export * from './lib/data/abstract';
 export * from './lib/data/mocks';
 export * from './lib/services';
 export * from './lib/data/firebase';
+export * from './lib/data/google/maps-loader';

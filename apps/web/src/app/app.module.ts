@@ -11,14 +11,23 @@ import {
   AbstractLocationService,
   AbstractLoggerService,
   AuthenticationFirebaseService,
+  googleMapApiLoader,
   LocationMockService,
   LoggerMockService,
+  MAP_LOADED,
 } from '@d13/shared/data-access';
+import {
+  HttpClient,
+  HttpClientJsonpModule,
+  HttpClientModule,
+} from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     WebShellFeatureModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -27,6 +36,11 @@ import {
     {
       provide: 'SHOW_DATA_CY',
       useValue: !environment.production,
+    },
+    {
+      provide: MAP_LOADED,
+      useFactory: googleMapApiLoader('AIzaSyAyM2GBYjMSCHVeuYAEMiPLEommNprPzOs'),
+      deps: [HttpClient],
     },
     {
       provide: AbstractAuthenticationService,

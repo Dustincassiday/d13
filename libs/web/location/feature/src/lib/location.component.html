@@ -1,4 +1,12 @@
 <h1>Locations</h1>
+
+<ng-container *ngIf="mapLoaded$ | async">
+
+  <google-map></google-map>
+</ng-container>
+
+
+
 <ng-container *ngIf="vm$ | async as vm ">
   <d13-location-card *ngFor="let location of vm.locations" [location]="location">
   </d13-location-card>

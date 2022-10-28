@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LocationComponent } from './location.component';
 import { WebLocationUiModule } from '@d13/web/location/ui';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 const routes: Routes = [
   {
@@ -12,7 +13,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, WebLocationUiModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    WebLocationUiModule,
+    GoogleMapsModule,
+    RouterModule.forChild(routes),
+  ],
   declarations: [LocationComponent],
 })
 export class WebLocationFeatureModule {}

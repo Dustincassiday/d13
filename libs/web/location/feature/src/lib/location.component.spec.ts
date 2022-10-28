@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { LocationFacade } from '@d13/web/location/shared';
+import { of } from 'rxjs';
 
 import { LocationComponent } from './location.component';
 
 describe('LocationComponent', () => {
-  let component: LocationComponent;
-  let fixture: ComponentFixture<LocationComponent>;
+  let sut: LocationComponent;
+  let facade: LocationFacade;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LocationComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(LocationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    facade = {
+      locations$: of([]),
+      getLocationsByPostalCode: jest.fn(),
+    } as any;
+    sut = new LocationComponent(facade);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 });
