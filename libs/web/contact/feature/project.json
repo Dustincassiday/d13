@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/contact/feature"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/contact/feature"],
       "options": {
         "jestConfig": "libs/web/contact/feature/jest.config.ts",
         "passWithNoTests": true

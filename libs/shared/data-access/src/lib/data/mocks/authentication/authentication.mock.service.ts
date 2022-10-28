@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  of,
+  throwError,
+} from 'rxjs';
 import { User } from '../../../models';
 import {
   AbstractAuthenticationService,
@@ -20,59 +27,54 @@ export class AuthenticationMockService extends AbstractAuthenticationService {
     super();
   }
 
-  public login(username: string, password: string): Observable<User> {
-    if (username === 'error@error') {
+  public login(username: string, password: string): Observable<void> {
+    this._currentUser$.next(this._getMockUser(username, password));
+    return of(void 0).pipe(
+      map(() => this._throwMockError(username)),
+      catchError((err) => throwError(() => new Error(err.message)))
+    );
+  }
+
+  public logout(): Observable<void> {
+    this._currentUser$.next(null);
+    return of(void 0);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public resetPassword(email: string): Observable<void> {
+    return of(void 0);
+  }
+
+  public signup(email: string, password: string): Observable<void> {
+    this._currentUser$.next(this._getMockUser(email, password));
+    return of(void 0);
+  }
+
+  private _throwMockError(email: string): void {
+    if (email === 'error@error') {
       this._logger.error('Invalid login', 'AuthenticationMockService');
       throw new Error('Invalid login');
     }
 
-    if (username === 'locked@error') {
+    if (email === 'locked@error') {
       this._logger.error(
         'This account has been locked',
         'AuthenticationMockService'
       );
       throw new Error('This account has been locked');
     }
-
-    const user = this._getMockUser();
-    user.metadata = [
-      ...user.metadata,
-      ...[{ loggedInWith: `user: ${username}, pass: ${password}` }],
-    ];
-    this._currentUser$.next(user);
-
-    return of(user);
   }
 
-  public logout(): Observable<void> {
-    return of(this._currentUser$.next(null));
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public resetPassword(email: string): Observable<void> {
-    return of();
-  }
-
-  public signup(email: string, password: string): Observable<User> {
-    const user = this._getMockUser();
-    user.metadata = [
-      ...user.metadata,
-      ...[{ signedUpWith: `email: ${email} pass: ${password}` }],
-    ];
-    this._currentUser$.next(user);
-    return of(user);
-  }
-
-  private _getMockUser(): User {
+  private _getMockUser(email: string, password: string): User {
     return {
       id: '12345',
       verified: true,
       anonymous: false,
       name: 'Test User',
-      email: 'testuser@test.com',
+      email,
       phone: null,
       photoUrl: null,
-      metadata: [],
+      metadata: [{ password }],
     };
   }
 }

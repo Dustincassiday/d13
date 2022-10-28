@@ -1,7 +1,14 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { AuthenticationService, User } from '@d13/shared/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  combineLatest,
+  map,
+  Observable,
+  of,
+} from 'rxjs';
 import { ShellViewmodel } from '../models';
 
 @Injectable({
@@ -37,24 +44,30 @@ export class ShellFacade {
       errors: [],
     });
 
-    try {
-      this._authService.login(email, password);
-    } catch (err: unknown) {
-      this._viewState$.next({
-        ...this._viewState$.value,
-        errors: [
-          {
-            category: 'auth',
-            type: 'danger',
-            message: `<strong>Login error.</strong> ${(<Error>err).message}`,
-          },
-        ],
-      });
-    }
+    this._authService
+      .login(email, password)
+      .pipe(
+        catchError((err) => {
+          this._viewState$.next({
+            ...this._viewState$.value,
+            errors: [
+              {
+                category: 'auth',
+                type: 'danger',
+                message: `<strong>Login error.</strong> ${
+                  (<Error>err).message
+                }`,
+              },
+            ],
+          });
+          return of(false);
+        })
+      )
+      .subscribe();
   }
 
   public logout(): void {
-    this._authService.logout();
+    this._authService.logout().subscribe();
   }
 
   public signup(email: string, password: string): void {
@@ -63,7 +76,26 @@ export class ShellFacade {
       authInitiated: true,
       errors: [],
     });
-    this._authService.signup(email, password);
+    this._authService
+      .signup(email, password)
+      .pipe(
+        catchError((err) => {
+          this._viewState$.next({
+            ...this._viewState$.value,
+            errors: [
+              {
+                category: 'auth',
+                type: 'danger',
+                message: `<strong>Signup error.</strong> ${
+                  (<Error>err).message
+                }`,
+              },
+            ],
+          });
+          return of(false);
+        })
+      )
+      .subscribe();
   }
 
   public resetPassword(email: string): void {

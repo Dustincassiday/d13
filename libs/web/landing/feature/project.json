@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/landing/feature"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/landing/feature"],
       "options": {
         "jestConfig": "libs/web/landing/feature/jest.config.ts",
         "passWithNoTests": true

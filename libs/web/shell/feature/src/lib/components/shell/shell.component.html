@@ -1,5 +1,6 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <d13-layout [vm]="vm" (loginBtnClick)="handleOpenModal(login)" (signupBtnClick)="handleOpenModal(signup)">
+  <d13-layout [vm]="vm" (loginBtnClick)="handleOpenModal(login)" (logoutBtnClick)="handleLogout()"
+    (signupBtnClick)="handleOpenModal(signup)">
     <router-outlet main-content></router-outlet>
   </d13-layout>
 
@@ -13,8 +14,8 @@
   </ng-template>
 
   <ng-template #signup let-modal>
-    <d13-signup-modal [modalRef]="modal" (loginBtnClick)="handleOpenModal(login)" (signupBtnClick)="signUpForm.submit()"
-      (closeModal)="handleCloseModal()">
+    <d13-signup-modal [modalRef]="modal" [alerts]="vm.errors" (loginBtnClick)="handleOpenModal(login)"
+      (signupBtnClick)="signUpForm.submit()" (closeModal)="handleCloseModal()">
       <d13-signup-form #signUpForm (formSubmit)="handleSignupFormSubmit($event)"></d13-signup-form>
     </d13-signup-modal>
   </ng-template>

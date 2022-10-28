@@ -34,7 +34,7 @@ describe('AuthenticationService', () => {
   });
 
   describe('login', () => {
-    it('should return a user observable', (done) => {
+    it('should ser currentUser$ on success', (done) => {
       sut.login('user', 'pass');
       sut.currentUser$.subscribe((user) => {
         expect(user?.id).toBe('12345');
@@ -42,16 +42,22 @@ describe('AuthenticationService', () => {
       });
     });
 
-    it('should throw an error on invalid login', () => {
-      expect(() => {
-        sut.login('error@error', 'pass');
-      }).toThrow('Invalid login');
+    it('should throw an error on invalid login', (done) => {
+      sut.login('error@error', 'pass').subscribe({
+        error: (err) => {
+          expect(err.message).toBe('Invalid login');
+          done();
+        },
+      });
     });
 
-    it('should throw an error on locked login', () => {
-      expect(() => {
-        sut.login('locked@error', 'pass');
-      }).toThrow('This account has been locked');
+    it('should throw an error on locked login', (done) => {
+      sut.login('locked@error', 'pass').subscribe({
+        error: (err) => {
+          expect(err.message).toBe('This account has been locked');
+          done();
+        },
+      });
     });
   });
 

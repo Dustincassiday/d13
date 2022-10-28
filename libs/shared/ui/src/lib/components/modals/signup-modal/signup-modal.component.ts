@@ -6,6 +6,7 @@ import {
   OnDestroy,
   Output,
 } from '@angular/core';
+import { AlertModel } from '@d13/web/shell/shared';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -16,6 +17,7 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SignupModalComponent implements OnDestroy {
   @Input() public modalRef!: NgbModalRef;
+  @Input() public alerts!: AlertModel[];
 
   @Output() public signupBtnClick = new EventEmitter();
   @Output() public loginBtnClick = new EventEmitter();

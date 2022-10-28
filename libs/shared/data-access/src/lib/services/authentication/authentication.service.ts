@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { AbstractAuthenticationService } from '../../data/abstract';
 import { User } from '../../models';
 
@@ -13,19 +13,19 @@ export class AuthenticationService {
     this.currentUser$ = _authService.currentUser$;
   }
 
-  public login(email: string, password: string): Observable<User> {
+  public login(email: string, password: string): Observable<void> {
     return this._authService.login(email, password);
   }
 
   public logout(): Observable<void> {
-    return this._authService.logout();
+    return from(this._authService.logout());
   }
 
-  public resetPassword(email: string) {
+  public resetPassword(email: string): Observable<void> {
     return this._authService.resetPassword(email);
   }
 
-  public signup(email: string, password: string): Observable<User> {
+  public signup(email: string, password: string): Observable<void> {
     return this._authService.signup(email, password);
   }
 }
