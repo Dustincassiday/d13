@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { LocationService, Location } from '@d13/shared/data-access';
+import { Injectable, Inject } from '@angular/core';
+import { LocationService, Location, MAP_LOADED } from '@d13/shared/data-access';
 import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 import { LocationViewmodel } from '../models';
 
@@ -9,6 +9,7 @@ import { LocationViewmodel } from '../models';
 export class LocationFacade {
   private _initialViewState: LocationViewmodel = {
     locations: [],
+    mapLoaded: false,
     locationSearchInitiated: false,
   };
 
@@ -18,11 +19,19 @@ export class LocationFacade {
 
   public readonly vm$: Observable<LocationViewmodel>;
 
-  constructor(private readonly _locationService: LocationService) {
+  constructor(
+    @Inject(MAP_LOADED) public mapLoaded$: Observable<boolean>,
+    private readonly _locationService: LocationService
+  ) {
     this.vm$ = combineLatest([
       this._locationService.locations$,
+      this.mapLoaded$,
       this._viewState$,
-    ]).pipe(map(([locations, vm]) => this._digestViewState(locations, vm)));
+    ]).pipe(
+      map(([locations, mapLoaded, vm]) =>
+        this._digestViewState(locations, mapLoaded, vm)
+      )
+    );
   }
 
   public getLocationsByPostalCode(postalCode: string) {
@@ -35,11 +44,12 @@ export class LocationFacade {
 
   private _digestViewState(
     locations: Location[],
+    mapLoaded: boolean,
     viewState: LocationViewmodel
   ): LocationViewmodel {
     if (viewState.locationSearchInitiated) {
       this._viewState$.next({ ...viewState, locationSearchInitiated: false });
     }
-    return { ...viewState, locations };
+    return { ...viewState, mapLoaded, locations };
   }
 }

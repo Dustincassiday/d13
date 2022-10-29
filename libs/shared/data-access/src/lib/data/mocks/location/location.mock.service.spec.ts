@@ -43,4 +43,24 @@ describe('LocationMockService', () => {
       });
     });
   });
+
+  describe('getLocation', () => {
+    it('should retreive location for given id', (done) => {
+      const testId = 'sp123';
+      sut.getLocation(testId).subscribe((location) => {
+        expect(location?.id).toBe(testId);
+        done();
+      });
+    });
+
+    it('should throw an error on invalid id', (done) => {
+      const testId = 'invalid id';
+      sut.getLocation(testId).subscribe({
+        error: (err) => {
+          expect(err.message).toBe(`Invalid location Id: ${testId}`);
+          done();
+        },
+      });
+    });
+  });
 });

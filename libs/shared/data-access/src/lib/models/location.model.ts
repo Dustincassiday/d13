@@ -1,3 +1,5 @@
+type Coordinates = { lat: number; lng: number };
+
 export interface Location {
   id: string;
   name: string;
@@ -7,5 +9,6 @@ export interface Location {
   state: string;
   postalCode: string;
   displayAddress: string;
+  coordinates: Coordinates;
   metadata: { [key: string]: string | number | boolean }[];
 }
