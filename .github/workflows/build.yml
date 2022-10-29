@@ -9,20 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: NX
         uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: prod
-      - run: npm ci
-      - run: npx nx workspace-lint
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint NX workspace
+        run: npx nx workspace-lint
       # - run: npx nx format:check - version descrepency between vscode prettier and nx format prettier cause this to fail on html files
-      - run: npx nx affected --target=lint --parallel=3
-      - run: npx nx test --parallel=3 --ci --code-coverage --coverage-directory=/github/workspace/coverage --coverage-reporters=lcovonly
-      - run: npx nx affected --target=build --parallel=3
-      - name: SonarCloud Scan
+      - name: Lint affected
+        run: npx nx affected --target=lint --parallel=3
+      - name: Run unit tests
+        run: npx nx test --parallel=3 --ci --code-coverage --coverage-directory=/github/workspace/coverage --coverage-reporters=lcovonly
+      - name: Build affected
+        run: npx nx affected --target=build --parallel=3
+      - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
