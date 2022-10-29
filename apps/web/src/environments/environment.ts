@@ -13,6 +13,9 @@ export const environment = {
     messagingSenderId: '861628063226',
     measurementId: 'G-S8VFHSZDC1',
   },
+  google: {
+    mapsApiKey: 'AIzaSyAyM2GBYjMSCHVeuYAEMiPLEommNprPzOs',
+  },
   production: false,
 };
 

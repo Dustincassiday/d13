@@ -20,6 +20,14 @@ export const routes: Route[] = [
       import('@d13/web/contact/feature').then((m) => m.WebContactFeatureModule),
   },
   {
+    path: 'locations',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('@d13/web/location/feature').then(
+        (m) => m.WebLocationFeatureModule
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadChildren: () =>

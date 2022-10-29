@@ -1,0 +1,9 @@
+<div class="card">
+  <h5 class="card-header">{{location.name}}</h5>
+  <div class="card-body">
+    <p class="card-text">{{ location.displayAddress}}</p>
+  </div>
+  <div class="card-footer text-end">
+    <button class="btn btn-primary" (click)="selected.emit(location)">Select</button>
+  </div>
+</div>

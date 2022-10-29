@@ -9,4 +9,6 @@ export abstract class AbstractLocationService {
   abstract locations$: Observable<Location[]>;
 
   abstract getLocationsByPostalCode(postalCode: string): Observable<void>;
+
+  abstract getLocation(id: string): Observable<Location | null>;
 }

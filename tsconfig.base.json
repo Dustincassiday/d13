@@ -23,6 +23,9 @@
       "@d13/web/contact/feature": ["libs/web/contact/feature/src/index.ts"],
       "@d13/web/landing/feature": ["libs/web/landing/feature/src/index.ts"],
       "@d13/web/landing/ui": ["libs/web/landing/ui/src/index.ts"],
+      "@d13/web/location/feature": ["libs/web/location/feature/src/index.ts"],
+      "@d13/web/location/shared": ["libs/web/location/shared/src/index.ts"],
+      "@d13/web/location/ui": ["libs/web/location/ui/src/index.ts"],
       "@d13/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
       "@d13/web/shell/shared": ["libs/web/shell/shared/src/index.ts"],
       "@d13/web/shell/ui": ["libs/web/shell/ui/src/index.ts"]

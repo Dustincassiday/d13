@@ -13,6 +13,9 @@
     "web-e2e": "apps/web-e2e",
     "web-landing-feature": "libs/web/landing/feature",
     "web-landing-ui": "libs/web/landing/ui",
+    "web-location-feature": "libs/web/location/feature",
+    "web-location-shared": "libs/web/location/shared",
+    "web-location-ui": "libs/web/location/ui",
     "web-shell-feature": "libs/web/shell/feature",
     "web-shell-shared": "libs/web/shell/shared",
     "web-shell-ui": "libs/web/shell/ui"
